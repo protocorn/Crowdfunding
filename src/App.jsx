@@ -10,7 +10,7 @@ export default function Home() {
         </h1>
 
         <p className="description">
-          Get started by configuring your desired network in{" "}
+          Get started by- configuring your desired network ins{" "}
           <code className="code">src/main.jsx</code>, then modify the{" "}
           <code className="code">src/App.jsx</code> file!
         </p>
