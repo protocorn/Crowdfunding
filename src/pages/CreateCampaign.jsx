@@ -95,6 +95,13 @@ const CreateCampaign = () => {
             handleChange={(e) => handleFormFieldChange('deadline', e)}
           />
         </div>
+        <FormField 
+            labelName="Category *"
+            placeholder="Enter A Category"
+            inputType="text"
+            value={form.category}
+            handleChange={(e) => handleFormFieldChange('category', e)}
+          />
 
         <FormField 
             labelName="Campaign image *"

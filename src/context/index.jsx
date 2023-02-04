@@ -40,6 +40,7 @@ export const StateContextProvider = ({ children }) => {
       target : campaign.target ? ethers.utils.formatEther(campaign.target.toString()) : null,
       amountCollected : campaign.amountCollected ? ethers.utils.formatEther(campaign.amountCollected.toString()) : null,
       deadline: campaign.deadline.toNumber(),
+      category: campaign.category ? campaign.category : "Education",
       image: campaign.image,
       pId: i
     }));
