@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaWhatsapp, FaTwitter } from "react-icons/fa";
 
 import { useStateContext } from '../context';
 import { CountBox, CustomButton, Loader } from '../components';
@@ -50,6 +50,33 @@ const CampaignDetails = () => {
     const handleMouseLeave = () => {
         setHoverValue(undefined)
     }
+    const [CurrentURL, setCurrentURL] = useState('');
+
+    useEffect(() => {
+        setCurrentURL(window.location.href);
+    }, []);
+
+
+    const shareText = "Check out this amazing website!";
+
+
+
+    const handleWhatsAppShare = () => {
+        window.open(
+            `https://api.whatsapp.com/send?text=${encodeURIComponent(
+                shareText
+            )}%20${encodeURIComponent(CurrentURL)}`
+        );
+    };
+    const handleTwitterShare = () => {
+
+        window.open(
+            `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                shareText
+            )}&url=${encodeURIComponent(CurrentURL)}`
+        );
+
+    };
     const [ratingsCount, setRatingsCount] = useState({
         1: 0,
         2: 0,
@@ -155,6 +182,17 @@ const CampaignDetails = () => {
                     <CountBox title="Total Backers" value={donators.length} />
                 </div>
             </div>
+            <div className="mt-[20px] flex flex-row p-4 bg-[#1c1c24] rounded-[10px] w-[150px] font-semibold text-white font-epilogue text-[18px]">
+                        Share
+
+                        <button className='ml-[-50px] mt-[30px]'>
+                            <h1><FaTwitter size="3rem" color='#00acee' onClick={handleTwitterShare} aria-hidden="true" onMouseOver="cursor.pointer" /></h1>
+                        </button>
+
+                        <button className='ml-[20px] mt-[30px]'>
+                            <h1><FaWhatsapp size="3rem" color='	#25D366' onClick={handleWhatsAppShare} aria-hidden="true" onMouseOver="cursor.pointer" /></h1>
+                        </button>
+                    </div>
 
             <div className="mt-[60px] flex lg:flex-row flex-col gap-5">
                 <div className="flex-[2] flex flex-col gap-[40px]">
@@ -293,8 +331,8 @@ const CampaignDetails = () => {
                         })}
                     </div>
                     <button onClick={handleRating} class="mt-[20px] bg-[#8c6dfd] hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg">
-                            Submit Rating
-                        </button>
+                        Submit Rating
+                    </button>
                 </div>
             </div>
         </div>
